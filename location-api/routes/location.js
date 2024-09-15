@@ -1,12 +1,16 @@
 const express = require('express');
 const axios = require('axios');
 const Location = require('../models/location');
+const uuidv4 = require('uuid').v4;
+const WebSocket = require('ws');
 const router = express.Router();
+const wss = new WebSocket.Server({ port: 8080 });
 require('dotenv').config();
 
 // API de geolocalização para obter as coordenadas, usuario passa a cidade e convertemos para cordenada
-const GEO_API_KEY = process.env.GEO_API_KEY; 
+const GEO_API_KEY = process.env.GEO_API_KEY;
 const HERE_API_KEY = process.env.HERE_API_KEY;
+const clients = {};
 
 // Rota para adicionar localização e salvar no MongoDB
 router.post('/add-location', async (req, res) => {
@@ -66,7 +70,7 @@ router.post('/get-locations-by-temp', async (req, res) => {
     let allLats = "";
     let allLngs = "";
     responseItems.forEach(item => {
-      if (item.position.lat == -29.125 || item.position.lng == -51.125){
+      if (item.position.lat == -29.125 || item.position.lng == -51.125) {
         console.log(item)
       }
       allLats += `${item.position.lat},`;
@@ -80,15 +84,22 @@ router.post('/get-locations-by-temp', async (req, res) => {
     for (let index = 0; index < wResponseData.length; index++) {
       const elementAddress = responseItems[index].address;
       const wResponseDataAddress = wResponseData[index];
-      wResponseData[index] = {...wResponseData[index], address: responseItems[index].address}
+      wResponseData[index] = { ...wResponseData[index], address: responseItems[index].address }
     }
 
-    let response = wResponseData.filter(weat=>Math.trunc(weat.current_weather.temperature) == temp);
+    let response = wResponseData.filter(weat => Math.trunc(weat.current_weather.temperature) == temp);
 
     res.status(200).json(response);
   } catch (error) {
     res.status(500).json({ message: "Error retrieving data", error: error.message });
   }
+});
+
+//rota para teste da notificacao
+router.post('/test-notification', (req, res) => {
+  const { message, user } = req.body;
+  sendNotification({ message}, user);
+  res.status(200).json(response);
 });
 
 // Converter o código de clima em uma descrição mais amigável
@@ -124,6 +135,36 @@ function getWeatherDescription(weatherCode) {
     99: "Thunderstorm with heavy hail"
   };
   return weatherDescriptions[weatherCode] || "Unknown weather condition";
+}
+
+wss.on('connection', ws => {
+  const userId = uuidv4();
+  clients[userId] = ws;
+  console.log(`Connected ${userId}`);
+
+  ws.on('close', () => {
+    delete clients[userId];
+    console.log('disconected: %s', userId);
+  });
+
+});
+
+function sendNotification(body, user = "") {
+  console.log(body, user);
+  if (!user) {
+    for (const userId in clients) {
+      const client = clients[userId];
+      client.send(JSON.stringify({ type: 'notification', message: body.message }));
+    }
+  } else {
+    try {
+      const client = clients[user];
+      client.send(JSON.stringify({ type: 'notification', message: body.message }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  // Enviar uma notificação
 }
 
 module.exports = router;
