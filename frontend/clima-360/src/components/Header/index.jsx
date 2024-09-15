@@ -1,3 +1,7 @@
 export default function Header() {
-  return <div>Header</div>;
+  return (
+    <header>
+      <input type="text" placeholder="Pesquisar local" />
+    </header>
+  );
 }
