@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.search-bar {
+    width: 70%;
+    padding: 10px;
+    border-radius: 30px;
+    border: none;
+}
+
+.logo {
+    font-size: 24px;
+}
