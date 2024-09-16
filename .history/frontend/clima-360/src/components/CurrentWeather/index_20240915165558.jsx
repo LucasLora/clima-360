@@ -1,5 +1,3 @@
-import "./CurrentWeather.css"
-
 export default function CurrentWeather() {
   return (
     <> <div> 

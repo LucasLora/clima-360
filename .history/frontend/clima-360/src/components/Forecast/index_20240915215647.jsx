@@ -1,26 +1,26 @@
 export default function Forecast() {
   return <div>
-<p>Seg. Chuva</p>
+<h1>Seg. Chuva</h1>
 <p>15c°</p>
 <img src="#" alt="minima" />
 <p>28c°</p>
 <img src="#" alt="maxima" />
-<p>Ter. Sol</p>
+<h2>Ter. Sol</h2>
  <p>19c°</p>
  <img src="#" alt="minima" />
 <p>30c°</p>
   <img src="#" alt="maxima" />
-<p>Qua. Nublado</p>
+<h3>Qua. Nublado</h3>
 <p>18c°</p>
 <img src="#" alt="minima" p/>  
 <p>29c°</p>
 <img src="#" alt="maxima" />
-<p>Qui. Tempestade</p>
+<h4>Qui. Tempestade</h4>
 <p>13c°</p>
 <img src="#" alt="minima" />
 <p>17c°</p>
 <img src="#" alt="maxima" />
-<p>Sex. Neve</p>
+<h5>Sex. Neve</h5>
 <p>7c°</p>
 <img src="#" alt="minima" />
 <p>12c°</p>
