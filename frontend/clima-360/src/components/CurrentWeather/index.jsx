@@ -1,23 +1,43 @@
-import "./CurrentWeather.css"
+import "./CurrentWeather.css";
 
 export default function CurrentWeather() {
   return (
-    <> <div> 
-<img src="#" alt="Sol" />
-<div className="current-weather"> 
-      <h1>Ensolarado</h1>
-      <img src="#" alt="Local atual" />
-    <h2>Caxias do Sul</h2>
-</div>
+    <>
+      <div className="current-weather">
+        <img src="sun.png" alt="Sol" width={163} />
+        <p className="weather-status">Ensolarado</p>
+        <span className="location-wrapper">
+          <img
+            src="position.png"
+            alt="Local atual"
+            className="position-icon"
+            width={12}
+          />
+          <p className="location">Caxias do Sul</p>
+        </span>
 
-    <span>28</span>
-    <img src="#" alt="maxima" />
-    <span>15</span>
-    <img src="#" alt="minima" />
-    <span>23C°</span>
-    <p>Domingo, 15 Set 2024</p>  
+        <div className="temp-info">
+          <div className="temp-range">
+            <div className="temp-max">
+              <span>28°C</span>
+              <img src="up.png" alt="maxima" width={14} />
+            </div>
+            <div className="temp-min">
+              <span>15°C</span>
+              <img src="down.png" alt="minima" width={14} />
+            </div>
+          </div>
 
-    </div> 
-    </> 
-  ) 
+          <div className="temperature">
+            <span>23</span>
+          </div>
+          <sup className="degrees-celsius-symbol">℃</sup>
+        </div>
+
+        <div className="weekday-date">
+          <p>Domingo, 15 Set 2024</p>
+        </div>
+      </div>
+    </>
+  );
 }
