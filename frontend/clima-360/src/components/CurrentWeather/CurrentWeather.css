@@ -1,5 +1,72 @@
 .current-weather {
     text-align: center;
-    color: white
-    ; 
+    color: white;
+}
+
+.weather-status {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.location-wrapper {
+    /* display: inline-flex; /* Alinha os itens em linha, como flexbox */
+    /* align-items: center; /* Alinha verticalmente ao centro */
+}
+
+.position-icon {
+    margin-right: 5px; /* Ajuste o espaço entre a imagem e o texto */
+    vertical-align: middle; /* Garante que o ícone esteja alinhado com o texto */
+}
+
+.location {
+    font-size: 25px;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.temp-info {
+    display: flex; /* Alinha os itens (temp-range e temperature) na mesma linha */
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.temperature {
+    font-size: 86px;
+    font-weight: 700;
+    display: flex;
+    align-items: baseline;
+    margin-left: 20px; /* Distância da temp-range */
+}
+
+.degrees-celsius-symbol {
+    font-size: 30px;
+    margin-left: 5px;
+}
+
+.temp-range {
+    display: flex;
+    flex-direction: column; /* Deixa max/min uma embaixo da outra */
+    align-items: flex-end; /* Alinha ao final para ficar ao lado do 23 */
+    font-size: 14px;
+}
+
+.temp-max,
+.temp-min {
+    display: flex;
+    align-items: center;
+}
+
+.temp-max img,
+.temp-min img {
+    margin-left: 5px;
+}
+
+.weekday-date {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+p {
+    margin-top: 5px;
 }
