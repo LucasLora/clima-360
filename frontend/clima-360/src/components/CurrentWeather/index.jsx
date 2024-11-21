@@ -31,7 +31,7 @@ export default function CurrentWeather() {
           <div className="temperature">
             <span>23</span>
           </div>
-          <sup className="degrees-celsius-symbol">℃</sup>
+          <sup className="degrees-celsius-symbol">°C</sup>
         </div>
 
         <div className="weekday-date">

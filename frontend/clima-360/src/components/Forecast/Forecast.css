@@ -1,0 +1,44 @@
+.forecast-container {
+  font-size: 22px;
+  margin: 75px 20px 20px 20px;
+  padding: 5px 20px 20px 20px;
+  border-radius: 20px;
+  background-color: rgba(82, 113, 255 ,0.5);
+} 
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.weather-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.day {
+  text-align: left;
+}
+
+.temperature-details {
+  display: flex;
+  align-items: center;
+  margin-left: auto
+}
+
+.temperature-details span {
+  display: inline-block;
+}
+
+.temperature-details .degree-symbol {
+  vertical-align: super;
+  font-size: 0.4em;
+  color: rgba(204, 204, 204, 0.808);
+}
+  
+.arrow-img {
+  width: 20px;
+  height: 20px;
+} 
+    
