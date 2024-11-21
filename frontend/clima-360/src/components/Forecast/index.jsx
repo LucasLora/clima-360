@@ -6,7 +6,7 @@ export default function Forecast() {
       <p>Próximos 5 dias</p>
 
       <div className="row">
-        <img src="logo.png" alt="chuva" className="weather-icon" />
+        <img src="rain-weather.png" alt="chuva" className="weather-icon" />
         <span className="day">Seg. Chuva</span>
         <div className="temperature-details">
           <img src="down.png" alt="minima" className="arrow-img" />
@@ -17,7 +17,7 @@ export default function Forecast() {
       </div>
 
       <div className="row">
-        <img src="logo.png" alt="sol" className="weather-icon" />
+        <img src="sun-weather.png" alt="sol" className="weather-icon" />
         <span className="day">Ter. Sol</span>
         <div className="temperature-details">
           <img src="down.png" alt="minima" className="arrow-img" />
@@ -28,7 +28,7 @@ export default function Forecast() {
       </div>
 
       <div className="row">
-        <img src="logo.png" alt="nublado" className="weather-icon" />
+        <img src="cloudy-weather.png" alt="nublado" className="weather-icon" />
         <span className="day">Qua. Nublado</span>
         <div className="temperature-details">
           <img src="down.png" alt="minima" className="arrow-img" />
@@ -39,7 +39,7 @@ export default function Forecast() {
       </div>
 
       <div className="row">
-        <img src="logo.png" alt="tempestade" className="weather-icon" />
+        <img src="storm-weather.png" alt="tempestade" className="weather-icon" />
         <span className="day">Qui. Tempestade</span>
         <div className="temperature-details">
           <img src="down.png" alt="minima" className="arrow-img" />
@@ -50,7 +50,7 @@ export default function Forecast() {
       </div>
 
       <div className="row">
-        <img src="logo.png" alt="neve" className="weather-icon" />
+        <img src="snow-weather.png" alt="neve" className="weather-icon" />
         <span className="day">Sex. Neve</span>
         <div className="temperature-details">
           <img src="down.png" alt="minima" className="arrow-img" />
