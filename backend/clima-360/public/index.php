@@ -1,6 +1,8 @@
 <?php
 
 require_once __DIR__ . '/../src/controller/UsuarioController.php';
+require_once __DIR__ . '/../src/controller/CidadeController.php';
+require_once __DIR__ . '/../src/controller/ClimaController.php';
 
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
@@ -18,6 +20,14 @@ $action = isset($_GET['action']) ? trim($_GET['action'])          : '';
 switch ($api) {
     case 'usuario':
         (new Controller\UsuarioController())->handle($action);
+        break;
+
+    case 'cidade':
+        (new Controller\CidadeController())->handle($action);
+        break;
+
+    case 'clima':
+        (new Controller\ClimaController())->handle($action);
         break;
 
     default:

@@ -16,9 +16,17 @@ class UsuarioController {
                 $this->getById();
                 break;
 
+            case 'getfavoritas':
+                $this->getFavoritas();
+                break;
+
+            case 'getalertas':
+                $this->getAlertas();
+                break;
+
             default:
                 http_response_code(400);
-                echo json_encode(['error' => 'Ação inválida em UsuarioController']);
+                echo json_encode(['error' => 'Ação inválida em UsuarioController'], JSON_UNESCAPED_UNICODE);
         }
     }
 
@@ -32,16 +40,40 @@ class UsuarioController {
         $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
         if (!$id) {
             http_response_code(400);
-            echo json_encode(['error' => 'ID não informado']);
+            echo json_encode(['error' => 'ID não informado'], JSON_UNESCAPED_UNICODE);
             return;
         }
         $dao = new UsuarioDao();
         $usuario = $dao->getById($id);
         if (!$usuario) {
             http_response_code(404);
-            echo json_encode(['error' => 'Usuário não encontrado']);
+            echo json_encode(['error' => 'Usuário não encontrado'], JSON_UNESCAPED_UNICODE);
             return;
         }
         echo json_encode($usuario, JSON_UNESCAPED_UNICODE);
+    }
+
+    private function getFavoritas() {
+        $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+        if (!$id) {
+            http_response_code(400);
+            echo json_encode(['error' => 'ID do usuário não informado'], JSON_UNESCAPED_UNICODE);
+            return;
+        }
+        $dao = new UsuarioDao();
+        $cidades = $dao->getFavoritas($id);
+        echo json_encode($cidades, JSON_UNESCAPED_UNICODE);
+    }
+
+    private function getAlertas() {
+        $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+        if (!$id) {
+            http_response_code(400);
+            echo json_encode(['error' => 'ID do usuário não informado'], JSON_UNESCAPED_UNICODE);
+            return;
+        }
+        $dao = new UsuarioDao();
+        $alertas = $dao->getAlertas($id);
+        echo json_encode($alertas, JSON_UNESCAPED_UNICODE);
     }
 }
